@@ -7,13 +7,45 @@ let username = document.getElementById('username');
 let notif = document.getElementById('notif');
 let tombol = document.getElementById('tombol');
 
-let toDoList = JSON.parse(sessionStorage.getItem('toDoList')) || [];
+let toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
 
-toDoList.forEach(todo => {
+function createParagraph(todo, isCompleted) {
   let paragraf = document.createElement('p');
   paragraf.innerText = todo;
   paragraf.classList.add('paragrafStyle');
   toDo.appendChild(paragraf);
+
+  if (isCompleted) {
+    paragraf.style.textDecoration = "line-through";
+  }
+
+  let deleteTimeout;
+  paragraf.addEventListener('click', () => {
+    if (!isCompleted) {
+      paragraf.style.textDecoration = "line-through";
+      isCompleted = true;
+      console.log(isCompleted);
+      deleteTimeout = setTimeout(() => {
+        toDoList = toDoList.filter(t => t.todo !== todo);
+        localStorage.setItem('toDoList', JSON.stringify(toDoList));
+        toDo.removeChild(paragraf);
+      }, 1000);
+    } else {
+      clearTimeout(deleteTimeout);
+      paragraf.style.textDecoration = "none";
+      isCompleted = false;
+      console.log(isCompleted);
+    }
+
+    toDoList.find(t => t.todo === todo).isCompleted = isCompleted;
+    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+  });
+
+  return paragraf;
+}
+
+toDoList.forEach(todoObj => {
+  createParagraph(todoObj.todo, todoObj.isCompleted);
 });
 
 username.innerText = user;
@@ -23,43 +55,19 @@ tombol.addEventListener('click', () => {
 });
 
 button.addEventListener('submit', (event) => {
+  event.preventDefault();
+
   if (inputField.value.trim() === "") {
     alert("Input tidak boleh kosong atau berisi spasi");
     inputField.value = "";
-    event.preventDefault();
     return;
-  } 
+  }
 
-  let paragraf = document.createElement('p');
-  paragraf.innerText = inputField.value;
-  paragraf.classList.add('paragrafStyle');
-  toDo.appendChild(paragraf);
+  let todoObj = { todo: inputField.value, isCompleted: false };
+  let paragraf = createParagraph(todoObj.todo, todoObj.isCompleted);
+  toDoList.push(todoObj);
+
+  localStorage.setItem('toDoList', JSON.stringify(toDoList));
+
   inputField.value = "";
-  event.preventDefault();
-
-  toDoList.push(paragraf.innerText);
-
-  sessionStorage.setItem('toDoList', JSON.stringify(toDoList));
-
-  let isCompleted = false; 
-  let deleteTimeout;
-
-  paragraf.addEventListener('click', () => {
-    if (!isCompleted) {
-      paragraf.style.textDecoration = "line-through";
-      isCompleted = true;
-      console.log(isCompleted);
-      deleteTimeout = setTimeout(() => {
-        toDoList = toDoList.filter(todo => todo !== paragraf.innerText);
-        sessionStorage.setItem('toDoList', JSON.stringify(toDoList));
-
-        toDo.removeChild(paragraf);
-      }, 1000);
-    } else {
-      clearTimeout(deleteTimeout);
-      paragraf.style.textDecoration = "none"; 
-      isCompleted = false; 
-      console.log(isCompleted);
-    }
-  });
 });
