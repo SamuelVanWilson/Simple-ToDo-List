@@ -1,6 +1,6 @@
 import { user } from "./page-1.js";
 
-let button = document.getElementById('btn');
+let form = document.getElementById('formToDo'); // Mengganti selector ke form
 let toDo = document.getElementById('toDoBox');
 let inputField = document.getElementById('inputField');
 let username = document.getElementById('username');
@@ -54,12 +54,7 @@ toDoList.forEach(todoObj => {
 
 username.innerText = user;
 
-tombol.addEventListener('click', (e) => {
-  notif.classList.toggle('disable');
-  e.preventDefault()
-});
-
-button.addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   if (inputField.value.trim() === "") {
@@ -75,4 +70,9 @@ button.addEventListener('submit', (event) => {
   localStorage.setItem('toDoList', JSON.stringify(toDoList));
 
   inputField.value = "";
+});
+
+tombol.addEventListener('click', (e) => {
+  notif.classList.toggle('disable');
+  e.preventDefault()
 });

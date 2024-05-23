@@ -1,11 +1,13 @@
 @media (min-width: 500px){
-    form#btn {
+    div.card{
+        width: 50%;
+    }
+    form#formToDo {
         background: none;
         margin: auto;
         width: 95%;
         display: flex;
         gap: 14px;
-        border: 1px solid red;
     }
     div.container {
         flex-direction: column;
@@ -34,18 +36,21 @@
     }
 }
 @media (min-width: 750px){
+    div.card{
+        width: 35%;
+    }
     ul#mobile,label.mobile-menu {display: none;}
     #dekstop li,#dekstop li a{
         display: block;
         color: #0086fd;
         margin-top: 0;
     }
-    form#btn {
+    form#formToDo {
         width: 80%;
     }
 }
 @media (min-width: 1100px){
-    form#btn {
+    form#formToDo {
         width: 70%;
     }
 }
