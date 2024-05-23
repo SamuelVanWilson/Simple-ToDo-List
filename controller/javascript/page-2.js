@@ -86,4 +86,9 @@ navigasi.forEach(e => {
 
   e.addEventListener('click', handleNavClick);
   e.addEventListener('touchend', handleNavClick);
+  e.addEventListener('touchend', (event) => {
+    event.preventDefault();
+    navigasi.forEach(el => el.classList.remove('nav-active'));
+    e.classList.add('nav-active');
+  });
 });
