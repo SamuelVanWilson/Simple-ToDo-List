@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/mobile.css">
+    <link rel="stylesheet" href="../style/detekstop.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <!-- NAVIGASI DEKSTOP -->
+    <nav>
+        <h1>ToDo List</h1>
+        <ul id="dekstop">
+            <li><a href="">HOME</a></li>
+            <li><a href="">PROFILE</a></li>
+            <li><a href="">LOGOUT</a></li>
+        </ul>
+
+    <!-- NAVIGASI MOBILE -->
+        <label for="check" class="mobile-menu"><i class="fas fa-bars fa-2x" style="font-size: 24px;"></i></label>
+        <input type="checkbox" id="check">
+
+        <ul id="mobile">
+            <li><a href="">HOME</a></li>
+            <li><a href="">PROFILE</a></li>
+            <li><a href="">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="notif">
+            <p>Ikutin Instagram <span>@inisamuelvan</span> :)</p>
+            <p  id="ig"><a href="" target="_blank">oke</a></p>
+        </div>
+        <form action="" id="btn">
+        <div class="inputBox">
+            <h2>Hello, <span id="username"></span></h2>
+            <div class="container">
+                <input type="text" id="inputField" class="inputToDo" placeholder="Masukan tugasmu"><button type="submit" class="btn">add</button>
+            </div>
+        </div>
+
+
+        <div class="box">
+            <p>Tugas Anda</p>
+            <div id="toDoBox"></div>
+        </div>
+        
+        </form>
+    </main>
+<script src="../../controller/javascript/page-2.js" type="module"></script>
+</body>
+</html>
+

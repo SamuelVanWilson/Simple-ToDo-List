@@ -5,36 +5,40 @@ let toDo = document.getElementById('toDoBox');
 let inputField = document.getElementById('inputField');
 let username = document.getElementById('username');
 let notif = document.getElementById('notif');
-let tombol = document.getElementById('tombol');
+let tombol = document.getElementById('li');
 
 let toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
 
 function createParagraph(todo, isCompleted) {
   let paragraf = document.createElement('p');
+  let checkBox = document.createElement('input')
+  let div = document.createElement('div')
+  checkBox.setAttribute('type', 'checkbox')
   paragraf.innerText = todo;
   paragraf.classList.add('paragrafStyle');
-  toDo.appendChild(paragraf);
+  div.classList.add('boxTodoStyle')
+  toDo.appendChild(div)
+  div.appendChild(paragraf);
+  div.appendChild(checkBox)
 
   if (isCompleted) {
     paragraf.style.textDecoration = "line-through";
   }
 
   let deleteTimeout;
-  paragraf.addEventListener('click', () => {
+  div.addEventListener('click', () => {
     if (!isCompleted) {
       paragraf.style.textDecoration = "line-through";
       isCompleted = true;
-      console.log(isCompleted);
       deleteTimeout = setTimeout(() => {
         toDoList = toDoList.filter(t => t.todo !== todo);
         localStorage.setItem('toDoList', JSON.stringify(toDoList));
-        toDo.removeChild(paragraf);
+        toDo.removeChild(div);
       }, 1000);
     } else {
       clearTimeout(deleteTimeout);
       paragraf.style.textDecoration = "none";
       isCompleted = false;
-      console.log(isCompleted);
     }
 
     toDoList.find(t => t.todo === todo).isCompleted = isCompleted;
@@ -50,8 +54,9 @@ toDoList.forEach(todoObj => {
 
 username.innerText = user;
 
-tombol.addEventListener('click', () => {
+tombol.addEventListener('click', (e) => {
   notif.classList.toggle('disable');
+  e.preventDefault()
 });
 
 button.addEventListener('submit', (event) => {

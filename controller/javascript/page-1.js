@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("form-user").removeAttribute("action");
         return;
       }
-      localStorage.setItem('USER', inputUser.value)
-      form.action = 'page-2.html'
+      localStorage.setItem('USER',  inputUser.value.toLowerCase())
+      form.action = 'home.html'
     });
 
 });

@@ -1,0 +1,51 @@
+@media (min-width: 500px){
+    form#btn {
+        background: none;
+        margin: auto;
+        width: 95%;
+        display: flex;
+        gap: 14px;
+        border: 1px solid red;
+    }
+    div.container {
+        flex-direction: column;
+    }
+    input.inputToDo{width: 100%;}
+    button.btn {margin-bottom: 14px;}
+    div.inputBox {
+        background-color: white;
+        box-shadow: 0 10px 15px #f2f1f7;
+        border-radius: 6px;
+        width: 100%;
+    }
+    div.box {
+        background-color: white;
+        box-shadow: 0 10px 15px #f2f1f7;
+        border-radius: 6px;
+        height: 100%;
+        border: none;
+        margin-top: 0;
+    }
+    div.box > p {
+        margin-top: -7px;
+        font-weight: 600;
+        background-color: none;
+        margin-bottom: 10px;
+    }
+}
+@media (min-width: 750px){
+    ul#mobile,label.mobile-menu {display: none;}
+    #dekstop li,#dekstop li a{
+        display: block;
+        color: #0086fd;
+        margin-top: 0;
+    }
+    form#btn {
+        width: 80%;
+    }
+}
+@media (min-width: 1100px){
+    form#btn {
+        width: 70%;
+    }
+}
