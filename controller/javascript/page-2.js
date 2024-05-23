@@ -6,6 +6,7 @@ let inputField = document.getElementById('inputField');
 let username = document.getElementById('username');
 let notif = document.getElementById('notif');
 let tombol = document.getElementById('li');
+let navigasi = document.querySelectorAll('li>a')
 
 let toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
 
@@ -75,4 +76,11 @@ form.addEventListener('submit', (event) => {
 tombol.addEventListener('click', (e) => {
   notif.classList.toggle('disable');
   e.preventDefault()
+});
+
+navigasi.forEach(e => {
+  e.addEventListener('click', (event)=>{
+    event.preventDefault();
+    return alert("Fitur belum tersedia, pembuatnya sedang malass");
+  })
 });

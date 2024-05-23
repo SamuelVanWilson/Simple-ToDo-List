@@ -106,7 +106,7 @@ nav {
 ul {
     display: flex;
     list-style: none;
-    justify-content: space-around;
+    justify-content: center;
     column-gap: 20px;
     align-items: center;
     text-align: center;
@@ -144,7 +144,7 @@ li {margin-top: 13px;}
     background-color: white;
     box-shadow: 0 6px 15px #f2f1f7;
     border-radius: 6px;
-    height: 100%;
+    height: fit-content;
     height: 18%;
     top: 3rem;
     width: 35%;
