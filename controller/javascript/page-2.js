@@ -79,8 +79,11 @@ tombol.addEventListener('click', (e) => {
 });
 
 navigasi.forEach(e => {
-  e.addEventListener('click', (event)=>{
+  const handleNavClick = (event) => {
     event.preventDefault();
-    return alert("Fitur belum tersedia, pembuatnya sedang malass");
-  })
+    alert("Fitur belum tersedia, pembuatnya sedang malas");
+  };
+
+  e.addEventListener('click', handleNavClick);
+  e.addEventListener('touchend', handleNavClick);
 });
