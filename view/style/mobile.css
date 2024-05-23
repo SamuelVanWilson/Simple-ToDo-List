@@ -116,6 +116,11 @@ nav a:hover {
     border: 1px solid #b9e3ff;
     color: #0086fd;
 }
+nav a:active {
+    background-color: #dcecfc;
+    border: 1px solid #b9e3ff;
+    color: #0086fd;
+}
 #check, #mobile{display: none;}
 #check:checked ~ #mobile {right: 0.4rem;}
 #notif{display: none;}
